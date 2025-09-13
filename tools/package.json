@@ -1,0 +1,19 @@
+{
+  "name": "tts-qr-publisher-tools",
+  "version": "1.0.0",
+  "description": "QR code generation tools for TTS book publishers",
+  "main": "generate-qr.js",
+  "scripts": {
+    "generate": "node generate-qr.js",
+    "test": "node test-generator.js"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.3"
+  },
+  "bin": {
+    "generate-qr": "./generate-qr.js"
+  },
+  "keywords": ["qr-code", "tts", "publisher", "ga-language", "book"],
+  "author": "TTS QR Demo",
+  "license": "MIT"
+}
