@@ -93,12 +93,12 @@ export default async function StoryPage({
           </a>
         </div>
 
-        {/* Back to Scanner */}
+        {/* Back to Scanner
         <div className="text-center mt-6">
           <a href="/" className="text-amber-600 hover:text-amber-800 underline">
             ← Back to QR Scanner
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   )
