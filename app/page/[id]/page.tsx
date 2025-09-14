@@ -30,6 +30,7 @@ async function fetchPageData(id: string): Promise<PageData | null> {
 
     const data = await response.json()
     console.log("[v0] Received page data:", data)
+
     return data
   } catch (error) {
     console.error("[v0] Error fetching page data:", error)
@@ -73,6 +74,17 @@ export default async function PageRoute({
           <h2 className="text-xl font-semibold mb-4">Story Content:</h2>
           <p className="text-lg leading-relaxed whitespace-pre-wrap">{pageData.gaText}</p>
         </div>
+
+        {/* Audio Player */}
+        {pageData.audioUrl && (
+          <div className="mt-6">
+            <h2 className="text-xl font-semibold mb-4">Audio:</h2>
+            <audio controls className="w-full">
+              <source src={pageData.audioUrl} type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        )}
 
         {/* Debug Info */}
         <div className="bg-yellow-50 p-4 rounded border">

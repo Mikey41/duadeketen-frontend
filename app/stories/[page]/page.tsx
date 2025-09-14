@@ -8,9 +8,14 @@ interface PageData {
   audioUrl: string | null
 }
 
+
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
+  if (!baseUrl) {
+    throw new Error("NEXT_PUBLIC_API_BASE_URL is not defined")
+}
 async function fetchPageData(pageNumber: string): Promise<PageData | null> {
   try {
-    const response = await fetch(`https://duadeketen-stories.onrender.com/api/stories/page/${pageNumber}`, {
+    const response = await fetch(`${baseUrl}/stories/page/${pageNumber}`, {
       cache: "no-store", // Always fetch fresh data
       headers: {
         "Content-Type": "application/json",
@@ -53,6 +58,19 @@ export default async function StoryPage({
         {/* Story Content */}
         <div className="max-w-4xl mx-auto">
           <StoryDisplay pageData={pageData} text={pageData.gaText} showManualInput={false} />
+
+        {pageData.audioUrl && (
+            <div className="mt-6">
+              <h2 className="text-xl font-semibold mb-2 text-amber-900">Listen to the Story</h2>
+              <audio
+                controls
+                src={pageData.audioUrl}
+                className="w-full"
+              >
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+          )}
         </div>
 
         {/* Navigation */}
