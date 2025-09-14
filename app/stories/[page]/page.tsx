@@ -57,13 +57,17 @@ export default async function StoryPage({
 
         {/* Story Content */}
         <div className="max-w-4xl mx-auto">
-          <StoryDisplay pageData={pageData} text={pageData.gaText} showManualInput={false} />
+          <StoryDisplay 
+          pageData={{...pageData, qrCodeUrl: ""}} 
+          text={pageData.gaText} 
+          showManualInput={false} />
 
         {pageData.audioUrl && (
             <div className="mt-6">
               <h2 className="text-xl font-semibold mb-2 text-amber-900">Listen to the Story</h2>
               <audio
-                controls
+                controls 
+                autoPlay
                 src={pageData.audioUrl}
                 className="w-full"
               >
